@@ -18,3 +18,8 @@ As part of the investigation, You are provided with a packet capture (PCAP) of t
 ---
 
 ### Q1: Identifying the attacker's IP address helps trace the source and stop further attacks. What is the attacker's IP address?
+
+1. Opened the PCAP file using Wireshark. Saw a long list of packets captured during the incident.
+2. Applied the http filter to sort http request only over the browser. As web request to server are in http, filtering will give us the packets we need to analyze for the behaviur.
+3. Using the [Statistics -> Endpoints] tab in Wireshark we can easily list all endpoints on the http requests.
+4. Now using an advance search filter [
