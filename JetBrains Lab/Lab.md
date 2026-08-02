@@ -17,9 +17,22 @@ As part of the investigation, You are provided with a packet capture (PCAP) of t
 
 ---
 
-### Q1: Identifying the attacker's IP address helps trace the source and stop further attacks. What is the attacker's IP address?
+### Q1: What is the attacker's IP address?
 
-1. Opened the PCAP file using Wireshark. Saw a long list of packets captured during the incident.
-2. Applied the http filter to sort http request only over the browser. As web request to server are in http, filtering will give us the packets we need to analyze for the behaviur.
-3. Using the [Statistics -> Endpoints] tab in Wireshark we can easily list all endpoints on the http requests.
-4. Now using an advance search filter [
+First I opened the PCAP file using Wireshark. Saw a long list of packets captured during the incident. Then applied the http filter to sort http request only over the browser. As web request to server are in http, filtering will give us the packets we need to analyze for the behavior. 
+
+[http filter]
+
+Discovered that, in the ***[Statistics -> Endpoints]*** tab in Wireshark we can easily list all endpoints on the http requests. Endpoints are the devices that are have been involved during the packet capturing. Here is a list of all endpoints found. It gives all unique IPs that sent the request to server. One of these is our desired IP, which is attackers endpoints.
+
+[endpoints]
+
+As our payload was uploaded to the site, to find the requests in http which used upload we want to list those specific http requests. I used an advance search filter ***[http and http contains "upload"]***, which resulted in only the IP address which was using an upload request. 
+
+[filter picture]
+
+So our desired IP is: ***23.158.56.196***
+
+Further to see all the request captured in the packets, I discovered that we can create a follow of all the packets. 
+***[Right Click -> Follow -> Http follow].***
+It join the contents the packets into a proper request and response form. This request and response in http can be analyzed for further analysis of each request.
