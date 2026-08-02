@@ -19,7 +19,11 @@ As part of the investigation, You are provided with a packet capture (PCAP) of t
 
 ### Q1: What is the attacker's IP address?
 
-First I opened the PCAP file using Wireshark. Saw a long list of packets captured during the incident. Then applied the http filter to sort http request only over the browser. As web request to server are in http, filtering will give us the packets we need to analyze for the behavior. 
+I opened the PCAP file using Wireshark and saw a long list of packets captured during the incident. 
+
+[captured packets]
+
+First I applied the http filter to sort http requests only. As web request to server are in http, filtering will give us the packets we need to analyze for the behavior. 
 
 [http filter]
 
@@ -34,5 +38,7 @@ As our payload was uploaded to the site, to find the requests in http which used
 So our desired IP is: ***23.158.56.196***
 
 Further to see all the request captured in the packets, I discovered that we can create a follow of all the packets. 
-***[Right Click -> Follow -> Http follow].***
+***[Right Click -> Follow -> Http Stream].***
 It join the contents the packets into a proper request and response form. This request and response in http can be analyzed for further analysis of each request.
+
+[http stream]
