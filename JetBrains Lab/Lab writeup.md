@@ -104,7 +104,7 @@ There is a request in http stream where attacker used these credentials to setup
   <img src="images/Username and Password.png" width="720"/>
 </p>
 
-### Q5. The attacker uploaded a webshell to ensure his access to the system. What is the name of the file that the attacker uploaded?
+### Q5. The attacker uploaded a web shell to ensure his access to the system. What is the name of the file that the attacker uploaded?
 
 After analyzing the Stream, observed that attacker uploaded a zip file. In this file is a malicious java script, the payload is running some shell/cmd command. <br/>
 ***Payload File Type: zip*** <br/>
@@ -112,18 +112,42 @@ After analyzing the Stream, observed that attacker uploaded a zip file. In this 
 
 ### Q6. When did the attacker execute their first command via the web shell?
 
-***[enabled=true&action=setEnabled&uuid=a727133c-6b63-4a06-bb9a-1d564728a1d9]***
-***[cmd=ls]***
+Looking at the stream, there was some activity after the file upload. 
+
+Attacker activated the plugin, using the <br/> command *enabled=true&action=setEnabled&uuid=a727133c-6b63-4a06-bb9a-1d564728a1d9*
+
+<p align="center">
+  <img src="images/first command.png" width="720"/>
+</p>
+
+Then he used ***[cmd=ls]*** to list all the directories and files in the system which he took the access of. 
+
+The timestamps of the response of command was: ***2024-06-30 08:03***
 
 ### Q7. The attacker tampered with a text file that contained the credentials of the admin user of the webserver. What new username and password did the attacker write in the file?
 
-***[cmd=bash+-c+%27echo+%22username%3Aa1l4m%2Cpassword%3Ayouarecompromised%22+%3E+%2Ftmp%2FCreds.txt%27]***
-***Username: a1l4m***
+I looked into the stream there was not such command in this stream. So i searched with another filter **[http and http contains "cmd"]** so that we get all the packets that contain the keyword cmd. As the command was running in the command line.
+
+<p align="center">
+  <img src="images/cmd username and password.png" width="720"/>
+</p>
+
+So i looked into the each, command and found the cmd command in a http request where username and password were passed.
+
+The command is: 
+
+***[cmd=bash+-c+%27echo+%22username%3Aa1l4m%2Cpassword%3Ayouarecompromised%22+%3E+%2Ftmp%2FCreds.txt%27]*** 
+
+which is equal to: 
+
+***bash -c 'echo "username:a1l4m,password:youarecompromised" > /tmp/Creds.txt'***
+
+<p align="center">
+  <img src="images/stream unam pass.png" width="720"/>
+</p>
+
+The credentials used are: <br/>
+***Username: a1l4m*** <br/>
 ***Password: youarecompromised***
 
 ### Q8. What is the MITRE Technique ID for the attacker's action in the previous question (Q7) when tampering with the text file?
-
-
-
-
-
