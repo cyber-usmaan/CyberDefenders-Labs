@@ -1,4 +1,4 @@
-<img width="1361" height="518" alt="image" src="https://github.com/user-attachments/assets/4c60bc90-cfa9-419b-8bb6-3f8d2f0d8f0d" /># Lab: Jetbrains Lab
+# Lab: Jetbrains Lab
 ![Course](https://img.shields.io/badge/Course%201-Foundations%20of%20Cybersecurity-4EEB2A)
 ![Status](https://img.shields.io/badge/Status-Completed-4EEB2A)
 
