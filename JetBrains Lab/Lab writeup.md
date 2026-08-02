@@ -47,6 +47,7 @@ So our desired IP is: ***23.158.56.196***
 
 Further to see all the request captured in the packets, I discovered that we can create a follow of all the packets. 
 ***[Right Click -> Follow -> Http Stream].***
+
 It join the contents the packets into a proper request and response form. This request and response in http can be analyzed for further analysis of each request.
 
 <p align="center">
@@ -57,42 +58,58 @@ It join the contents the packets into a proper request and response form. This r
 
 Okay so find what server is running, i simply looked at the http stream of the packets. In the first line of the response http request the version number of the server was mentioned.
 
-Server is running the service: ***2023.11.3*** under the tag server service. 
-The Build number is 147512. We can see more detials as well.
+Server is running the service: ***2023.11.3*** under the tag server service. <br/>
+The Build number is 147512. <br/>
+We can see more detials as well.
 
-[images of stream head]
+<p align="center">
+  <img src="images/version number.png" width="720"/>
+</p>
 
 ### Q3. After identifying the version of our web server service, what CVE number corresponds to the vulnerability the attacker exploited?
 
 To find the CVE (common vulnerability and exposure) number of this request first it is important to know what the attack was exactly. For this purpose i opened the HTTP stream. Tried to read the requests i found that there is a privilege escalation made, the user role is assigned to admin bypassing the authentication system.
 
-Secondly there is a upload made. It is a zip file. In this file is a malicious java script, the payload is running some shell/cmd command.
-***Payload Type: Zip file***
+Secondly there is a upload made. It is a zip file. In this file is a malicious java script, the payload is running some shell/cmd command. <br/>
+***Payload Type: Zip file*** <br/>
 ***Named: NSt8bHTg.zip***
 
-[image of payload]
+<p align="center">
+  <img src="images/payload in stream.png" width="720"/>
+</p>
 
 Now that we the attack is known and I already have the server service running in it (2023.11.3), which will be used to identify the CVE number. I visited the [CVE website](https://www.cve.org/), and entered the server service number. I found that the CVE that matched the description and service number is ***CVE-2024-23917***. But this CVE number was not the answer of the question.
 
-[images of 2023.11.3 CVE]
+<p align="center">
+  <img src="images/2023.11.3 CVE number.png" width="720"/>
+</p>
 
 After analyzing the walkthrough, i realized that in this case, the vulnerability was resolved in TeamCity version 2023.11.4, as noted on the JetBrains site. So i retried the search with ***Service Service: 2023.11.4***. Which showed another matching CVE number.
 
-[CVE 2023.11.4]
+<p align="center">
+  <img src="images/2023.11.4 CVE number.png" width="720"/>
+</p>
 
 Hence required CVE number is: ***CVE-2024-27198***.
 
 ### 4. The attacker exploited the vulnerability to create a user account. What credentials did he set up?
 
-There is a request in http stream where attacker used these credentials to setup an account.
-Username:
-Password: 
-Email:
-Role:
+There is a request in http stream where attacker used these credentials to setup an account. <br/>
+Username: c91oyemw <br/>
+Password: CL5vzdwLuK <br/>
+Email: c91oyemw@example.com<br/>
+Role: Admin
 
-[image username:password]
+<p align="center">
+  <img src="images/Username and Password.png" width="720"/>
+</p>
 
-### Q5. 
+### Q5. The attacker uploaded a webshell to ensure his access to the system. What is the name of the file that the attacker uploaded?
 
+After analyzing the Stream, observed that attacker uploaded a zip file. In this file is a malicious java script, the payload is running some shell/cmd command. <br/>
+***Payload File Type: zip*** <br/>
+***File Named: NSt8bHTg.zip***
+
+### Q6. When did the attacker execute their first command via the web shell?
 
 
