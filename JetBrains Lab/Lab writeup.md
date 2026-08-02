@@ -21,19 +21,27 @@ As part of the investigation, You are provided with a packet capture (PCAP) of t
 
 I opened the PCAP file using Wireshark and saw a long list of packets captured during the incident. 
 
-[captured packets]
+<p align="center">
+  <img src="images/captured file.png" width="720"/>
+</p>
 
 First I applied the http filter to sort http requests only. As web request to server are in http, filtering will give us the packets we need to analyze for the behavior. 
 
-[http filter]
+<p align="center">
+  <img src="images/http filter.png" width="720"/>
+</p>
 
 Discovered that, in the ***[Statistics -> Endpoints]*** tab in Wireshark we can easily list all endpoints on the http requests. Endpoints are the devices that are have been involved during the packet capturing. Here is a list of all endpoints found. It gives all unique IPs that sent the request to server. One of these is our desired IP, which is attackers endpoints.
 
-[endpoints]
+<p align="center">
+  <img src="images/endpoints.png" width="720"/>
+</p>
 
 As our payload was uploaded to the site, to find the requests in http which used upload we want to list those specific http requests. I used an advance search filter ***[http and http contains "upload"]***, which resulted in only the IP address which was using an upload request. 
 
-[filter picture]
+<p align="center">
+  <img src="images/advance filter.png" width="720"/>
+</p>
 
 So our desired IP is: ***23.158.56.196***
 
@@ -41,4 +49,6 @@ Further to see all the request captured in the packets, I discovered that we can
 ***[Right Click -> Follow -> Http Stream].***
 It join the contents the packets into a proper request and response form. This request and response in http can be analyzed for further analysis of each request.
 
-[http stream]
+<p align="center">
+  <img src="images/HTTP stream.png" width="720"/>
+</p>
