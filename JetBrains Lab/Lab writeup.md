@@ -1,4 +1,4 @@
-# Lab: Jetbrains Lab
+<img width="1361" height="518" alt="image" src="https://github.com/user-attachments/assets/4c60bc90-cfa9-419b-8bb6-3f8d2f0d8f0d" /># Lab: Jetbrains Lab
 ![Course](https://img.shields.io/badge/Course%201-Foundations%20of%20Cybersecurity-4EEB2A)
 ![Status](https://img.shields.io/badge/Status-Completed-4EEB2A)
 
@@ -95,10 +95,10 @@ Hence required CVE number is: ***CVE-2024-27198***.
 ### 4. The attacker exploited the vulnerability to create a user account. What credentials did he set up?
 
 There is a request in http stream where attacker used these credentials to setup an account. <br/>
-Username: c91oyemw <br/>
-Password: CL5vzdwLuK <br/>
-Email: c91oyemw@example.com<br/>
-Role: Admin
+***Username: c91oyemw*** <br/>
+***Password: CL5vzdwLuK*** <br/>
+***Email: c91oyemw@example.com***<br/>
+***Role: SYSTEM_ADMIN***
 
 <p align="center">
   <img src="images/Username and Password.png" width="720"/>
@@ -111,5 +111,19 @@ After analyzing the Stream, observed that attacker uploaded a zip file. In this 
 ***File Named: NSt8bHTg.zip***
 
 ### Q6. When did the attacker execute their first command via the web shell?
+
+***[enabled=true&action=setEnabled&uuid=a727133c-6b63-4a06-bb9a-1d564728a1d9]***
+***[cmd=ls]***
+
+### Q7. The attacker tampered with a text file that contained the credentials of the admin user of the webserver. What new username and password did the attacker write in the file?
+
+***[cmd=bash+-c+%27echo+%22username%3Aa1l4m%2Cpassword%3Ayouarecompromised%22+%3E+%2Ftmp%2FCreds.txt%27]***
+***Username: a1l4m***
+***Password: youarecompromised***
+
+### Q8. What is the MITRE Technique ID for the attacker's action in the previous question (Q7) when tampering with the text file?
+
+
+
 
 
