@@ -45,10 +45,10 @@ As our payload was uploaded to the site, to find the requests in http which used
 
 So our desired IP is: ***23.158.56.196***
 
-Further to see all the request captured in the packets, I discovered that we can create a follow of all the packets. 
+Further to see all the request captured in the packets, I discovered that we can create a follow of all the packets of any desired IP. 
 ***[Right Click -> Follow -> Http Stream].***
 
-It join the contents the packets into a proper request and response form. This request and response in http can be analyzed for further analysis of each request.
+It join the contents the packets of an IP into a proper request and response form. This request and response in http can be analyzed for further analysis of each request.
 
 <p align="center">
   <img src="images/HTTP stream.png" width="720"/>
