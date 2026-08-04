@@ -1,4 +1,4 @@
-# Lab: Jetbrains Lab
+# Lab: Jetbrains
 ![Course](https://img.shields.io/badge/Category%20-Network%20Forensics-4EEB2A)
 ![Status](https://img.shields.io/badge/Status-Completed-4EEB2A)
 
